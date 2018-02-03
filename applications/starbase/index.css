@@ -9,3 +9,43 @@ body{
     color: white;
     margin-top: 60px;
 }
+
+h4{
+    position: relative;
+    font-weight: bold;
+}
+
+h4:after{
+    content: '';
+    position: absolute;
+    background: #4fc0bd;
+    height: 2px;
+    width: 90%;
+    bottom: -5px;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.character-card {
+    border: 2px solid #4fc0bd;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px;
+    transition: 0.3s ease-in-out;
+    margin: 10px 0;
+}
+
+.character-card:hover {
+    box-shadow: 0 0 10px #4fc0bd;
+    background-color: rgba(79, 193, 190, 0.2);
+    animation: pulse 0.5s infinite alternate;
+}
+
+@keyframes pulse {
+    0%{
+        box-shadow: 0 0 15px #4fc0bd;
+    }
+    100%{
+        box-shadow: 0 0 35px #4fc0bd;
+    }
+}
