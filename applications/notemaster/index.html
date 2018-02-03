@@ -7,6 +7,7 @@
     <title>Notemaster</title>
 
     <script src="https://unpkg.com/vue"></script>
+    <!-- <script src="./node_modules/sfcookies/index.js"></script> -->
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="http://davidtkatz.com/public_css/noteMaster.css" />
@@ -32,19 +33,36 @@
                     <label>Note Text:</label>
                     <textarea class="form-control" v-model="note.text"></textarea>
                 </div>
+
+                <div class="form-group">
+                    <label>Note Tag:</label>
+                    <input class="form-control" type="text" v-model="note.tag">
+                </div>
             </div>
 
             <button class="btn btn-primary" @click="addNote">Submit</button>
+            <div class="form-group" style="margin-top: 30px;">
+                <span >Filter:</span>
+                <span
+                    style="padding: 5px 10px; border: 1px solid grey; margin: 5px; border-radius: 3px"
+                    v-for="(note, index) in notes"
+                    @click="setFilter"
+                    >
+                        {{note.tag}}
+                </span>
+
+            </div>
         </div>
         <div class="col-sm-12">
             <div class="row">
-                <div class="col-sm-4 note" v-for="(note, index) in notes">
+                <div class="col-sm-4 note" v-for="(note, index) in notes" v-if="note.tag === filter">
                     <div class="card">
                         <div class="card-block">
                             <button class="close" @click="removeNote(index)">&times</button>
                             <h4 class="card-title">{{note.title}}</h4>
-                            <h6 class="card-subtitle mb-2 text-muted">{{note.date}}</h6>
                             <p class="card-text">{{note.text}}</p>
+                            <h6 class="card-subtitle mb-2 text-muted">{{note.date}}</h6>
+                            <span class="card-subtitle" style="color: orange; font-weight: bold">{{note.tag}}</span>
                         </div>
                     </div>
                 </div>
@@ -57,30 +75,65 @@
             el: '#app',
             data:{
                 title: 'Notemaster',
+                filter: '',
                 note: {
                     title: '',
-                    text: ''
+                    text: '',
+                    tag: ''
                 },
                 notes: [
                     {
                         title: 'Wycieczka',
                         text: 'Wycieczki są super!',
-                        date: new Date(Date.now()).toLocaleString()
+                        date: new Date(Date.now()).toLocaleString(),
+                        tag: 'priv'
+                    },
+                    {
+                        title: 'Spotkanie',
+                        text: 'Biznesowe spotkanie',
+                        date: new Date(Date.now()).toLocaleString(),
+                        tag: 'work'
                     }
                 ]
             },
             methods: {
                 addNote(){
-                    let { title, text } = this.note;
+                    let { title, text, tag } = this.note;
                     this.notes.push({
                         title,
                         text,
+                        tag,
                         date: new Date(Date.now()).toLocaleString()
-                    })
+                    });
+
                 },
                 removeNote(index){
                     this.notes.splice(index, 1)
+                    localStorage.removeItem(index);
+
+                },
+                setFilter(event){
+                    console.log(event.target.innerHTML);
+                    // this.filter = event.tagret.innerHTML;
                 }
+            },
+            mounted(){
+                // this.notes.forEach((item, i) => {
+                //     localStorage.setItem(i, [item.title, item.text, item.date]);
+                // })
+
+                // localStorage.forEach(item => {
+                //     notes.push({
+                //         title: item[0],
+                //         text: item[2],
+                //         date: item[2]
+                //     })
+                // })
+            },
+            updated(){
+                this.notes.forEach((item, i) => {
+                    localStorage.setItem(i, [item.title, item.text, item.date]);
+                })
             }
         });
     </script>
