@@ -31,7 +31,7 @@ h4:after{
     border-radius: 5px;
     cursor: pointer;
     padding: 10px;
-    transition: 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
     margin: 10px 0;
 }
 
