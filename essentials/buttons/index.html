@@ -1,0 +1,34 @@
+<!DOCTYPE>
+<html>
+    <head>
+        <title>Lists</title>
+        <script src="https://unpkg.com/vue"></script>
+        <link rel="stylesheet" href="http://davidtkatz.com/public_css/vue.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    </head>
+    <body>
+
+        <div id="app">
+            <button
+                class="vue-btn"
+                @click="reveal"
+            >
+                Odkryj tajny numer
+            </button>
+        </div>
+
+        <script>
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    secretNumber: Math.floor(Math.random() * 100) + 1
+                },
+                methods: {
+                    reveal(){
+                        alert(`Twój personalny tajny kod: ${this.secretNumber}`)
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>
