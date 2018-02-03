@@ -50,11 +50,29 @@
                     >
                         {{note.tag}}
                 </span>
+                <span
+                    style="padding: 5px 10px; border: 1px solid grey; margin: 5px; border-radius: 3px"
+                    @click="filter = ''"
+                    >
+                        All
+                </span>
 
             </div>
         </div>
         <div class="col-sm-12">
             <div class="row">
+
+                <div class="col-sm-4 note" v-for="(note, index) in notes" v-if="filter == ''">
+                    <div class="card">
+                        <div class="card-block">
+                            <button class="close" @click="removeNote(index)">&times</button>
+                            <h4 class="card-title">{{note.title}}</h4>
+                            <p class="card-text">{{note.text}}</p>
+                            <h6 class="card-subtitle mb-2 text-muted">{{note.date}}</h6>
+                            <span class="card-subtitle" style="color: orange; font-weight: bold">{{note.tag}}</span>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-sm-4 note" v-for="(note, index) in notes" v-if="note.tag === filter">
                     <div class="card">
                         <div class="card-block">
@@ -66,6 +84,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
@@ -114,7 +133,9 @@
                 },
                 setFilter(event){
                     console.log(event.target.innerHTML);
-                    // this.filter = event.tagret.innerHTML;
+                    var str = event.target.innerHTML;
+                    var newStr = str.replace(/(^\s+|\s+$)/g,'');
+                    this.filter = newStr;
                 }
             },
             mounted(){
