@@ -1,5 +1,6 @@
 body{
     background: #263238;
+    font-size: 14px;
 }
 #app{
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -79,6 +80,7 @@ h3:after{
 .item{
     border-bottom: 1px dotted #4fc0bd;
     padding: 1% 0;
+    height: auto;
 }
 
 strong.item-details{

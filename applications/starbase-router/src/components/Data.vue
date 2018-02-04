@@ -9,7 +9,6 @@
             :type="type"
           />
       </div>
-
   </div>
 </template>
 
@@ -30,7 +29,7 @@
             fetchItems(){
                 this.items = [];
                 this.type = this.$route.params.type
-                let initIds = [1,13,14]
+                let initIds = [5,10,11]
 
                 for (let i in initIds){
                     let id = initIds[i]

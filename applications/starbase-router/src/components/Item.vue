@@ -12,7 +12,6 @@
           </div>
       </div>
   </div>
-
 </template>
 
 <script>
@@ -25,7 +24,7 @@ export default {
     },
     methods: {
         switchItem(){
-            let randId = Math.floor(Math.random() * 62) + 1;
+            let randId = Math.floor(Math.random() * 32) + 1;
             fetch(`https://swapi.co/api/${this.type}/${randId}`, {method: "GET"})
             .then( response => response.json() )
             .then( json => this.item = json )
