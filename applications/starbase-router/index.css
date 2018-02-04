@@ -53,8 +53,9 @@ h3:after{
 }
 
 .type{
-    background: #4fc0bd;
-    color: #263238;
+    background: rgba(79, 193, 190, 0.2);
+    border: 2px solid #4fc0bd;
+    color: #fff;
     font-weight: bold;
     border-radius: 5px;
     padding: 10px;
