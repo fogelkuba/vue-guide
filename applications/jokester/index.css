@@ -1,0 +1,8 @@
+#app{
+    font-family: 'Futura', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: antialiased;
+    text-align: center;
+    color: #333;
+    margin-top: 60px;
+}
