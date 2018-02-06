@@ -11,12 +11,11 @@
                       <Joke v-for="(joke, index) in $store.state.jokes"
                       :joke="joke"
                       :key="index"
+                      :index="index"
                       />
                   </div>
         	</div>
-
         </div>
-
     </div>
 </template>
 
