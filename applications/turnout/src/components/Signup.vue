@@ -1,6 +1,6 @@
 <template>
   <div class="from-inline">
-      <h3>Sign up</h3>
+      <h3>Sign Up</h3>
       <div class="form-group">
           <input
             type="text"
@@ -14,15 +14,18 @@
             class="form-control"
             v-model="password"
           />
+          <br>
           <button
             class="btn btn-primary"
             @click="signUp"
             >
-            Sign up
+            Sign Up
         </button>
       </div>
-      <br>
+      
       <p>{{err.message}}</p>
+      <br>
+      <router-link to="/signin">Not a user? Create account</router-link>
   </div>
 </template>
 

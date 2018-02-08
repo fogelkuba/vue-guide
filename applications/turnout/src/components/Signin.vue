@@ -14,6 +14,7 @@
             class="form-control"
             v-model="password"
           />
+          <br>
           <button
             class="btn btn-primary"
             @click="signIn"
@@ -21,8 +22,10 @@
             Sign In
         </button>
       </div>
-      <br>
+      
       <p>{{err.message}}</p>
+      <br>
+      <router-link to="/signup">Already user?</router-link>
   </div>
 </template>
 
