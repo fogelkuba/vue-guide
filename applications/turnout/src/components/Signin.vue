@@ -1,5 +1,5 @@
 <template>
-  <div class="form-inline">
+  <div class="from-inline">
       <h3>Sign In</h3>
       <div class="form-group">
           <input
@@ -14,21 +14,36 @@
             class="form-control"
             v-model="password"
           />
-          <button class="btn btn-primary">Sign In</button>
+          <button
+            class="btn btn-primary"
+            @click="signIn"
+            >
+            Sign In
+        </button>
       </div>
+      <br>
+      <p>{{err.message}}</p>
   </div>
 </template>
 
 <script>
+import { firebaseApp } from '../firebaseApp';
+
 export default {
     data(){
         return {
             email: '',
-            password: ''
+            password: '',
+            err: ''
         }
     },
     methods: {
-        signIn(){}
+        signIn(){
+            firebaseApp.auth().signInWithEmailAndPassword(this.email, this.password)
+            .catch(error => {
+                this.err = error;
+            })
+        }
     }
 }
 </script>
