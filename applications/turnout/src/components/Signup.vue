@@ -22,7 +22,7 @@
             Sign Up
         </button>
       </div>
-      
+
       <p>{{err.message}}</p>
       <br>
       <router-link to="/signin">Not a user? Create account</router-link>
