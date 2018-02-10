@@ -5,13 +5,25 @@
       <hr>
       <AddEvent/>
       <hr>
-      {{$store.state}}
+        <div class="col-md-12">
+            <div class="row">
+                <EventItem
+                  v-for="(item, index) in this.$store.state.events"
+                  :event="item"
+                  :key="index"
+                />
+            </div>
+        </div>
+
+  </EventItem/>
+      <!-- {{$store.state.events}} -->
   </div>
 </template>
 
 <script>
     import {firebaseApp, eventsRef} from '../firebaseApp';
     import AddEvent from './AddEvent.vue';
+    import EventItem from './EventItem.vue';
     export default {
         methods: {
             signOut(){
@@ -20,7 +32,8 @@
             }
         },
         components: {
-            AddEvent
+            AddEvent,
+            EventItem
         },
         mounted(){
             eventsRef.on('value', (snap) => {
@@ -28,7 +41,7 @@
                 snap.forEach(event => {
                     events.push(event.val())
                 });
-                console.log(events)
+                this.$store.dispatch('setEvents', events)
             });
 
         }
