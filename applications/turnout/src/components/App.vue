@@ -1,10 +1,9 @@
 <template>
-<div id="app">
+  <div id="app">
+      <router-view>
 
-  <router-view>
-
-  </router-view>
-</div>
+      </router-view>
+  </div>
 </template>
 
 <script>
