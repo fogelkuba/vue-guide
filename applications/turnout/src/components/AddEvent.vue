@@ -24,7 +24,7 @@
             </div>
             <div class="form-group">
                 <label>Email</label>
-                <input type="text" class="form-control" v-model="event.email">
+                <input type="email" class="form-control" v-model="event.email">
             </div>
             <button class="btn stn-small btn-primary" @click="addEvent">Submit</button>
         </div>
